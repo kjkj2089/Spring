@@ -1,0 +1,88 @@
+body{
+    margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	background-color:#ffffff;
+
+	scrollbar-3dlight-color: #B4B4B4;
+	scrollbar-arrow-color: #333333;
+	scrollbar-base-color: #EEEEEE;
+	scrollbar-darkshadow-color: #FFFFFF;
+	scrollbar-face-color: #EEEEEE;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #B4B4B4;
+	}
+
+td {font-family:돋음, 굴림,Verdana, ; font-size:12px; word-break:break-all;}
+
+img {border:none;}
+
+/***** link *****/
+a:link {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#2D2D2D;  text-decoration:none}
+a:visited {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#2D2D2D; text-decoration:none}
+a:active {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#2D2D2D; text-decoration:none}
+a:hover {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#0B2036; text-decoration:underline}
+
+
+/***** menu *****/
+a.m:link {font-family:돋음, 굴림; color:#ffffff; font-size:12px;letter-spacing:-1; font-weight:bold; text-decoration:none;}
+a.m:visited {font-family:돋음, 굴림; color:#ffcccc; font-size:12px; letter-spacing:-1; font-weight:bold; text-decoration:none; }
+a.m:active {font-family:돋음, 굴림; color:#ffffff; font-size:12px;letter-spacing:-1; font-weight:bold;  text-decoration:underline; }
+a.m:hover {font-family:돋음, 굴림; color:#ffffff; font-size:12px; letter-spacing:-1; font-weight:bold; text-decoration:underline; }
+
+a.lm:link {font-family:돋음, 굴림;  font-size:12px; color:#000000;letter-spacing:-1; text-decoration:none;}
+a.lm:visited {font-family:돋음, 굴림; color:#000000; font-size:12px;  letter-spacing:-1; text-decoration:none; }
+a.lm:active {font-family:돋음, 굴림; color:#000000; font-size:12px; letter-spacing:-1;  text-decoration:underline; }
+a.lm:hover {font-family:돋음, 굴림; color:#000000; font-size:12px; letter-spacing:-1;  text-decoration:underline; }
+
+a.sc:link {font-family:돋음, 굴림;  font-size:12px; color:#000000; text-decoration:underline;}
+a.sc:visited {font-family:돋음, 굴림; color:#666666; font-size:12px;  text-decoration:underline; }
+a.sc:active {font-family:돋음, 굴림; color:#000000; font-size:12px;   text-decoration:underline; }
+a.sc:hover {font-family:돋음, 굴림; color:#FF0099; font-size:12px;  text-decoration:underline; }
+
+
+
+
+/***** page *****/
+a.p:link {font-family:Verdana; color:#6E7724; font-size:10px;  font-weight:bold; letter-spacing:-1; text-decoration:none}
+a.p:visited {font-family:Verdana,돋음; color:#6E7724; font-size:10px;  font-weight:bold; letter-spacing:-1; text-decoration:none}
+a.p:active {font-family:Verdana,돋음; color:#6E7724; font-size:10px;  font-weight:bold; letter-spacing:-1; text-decoration:underline}
+a.p:hover {font-family:Verdana,돋음; color:#6E7724; font-size:10px;  font-weight:bold; letter-spacing:-1; text-decoration:underline}
+
+/***** txt *****/
+.left_tt {font-family:돋음, 굴림,Verdana, ; font-size:13px; color:#990000; font-weight:bold; padding-left:5px;}
+.title_tt {font-family:돋음, 굴림,Verdana, ; font-size:14px; color:#000000; font-weight:bold; padding-left:5px;}
+.v_name {font-family:돋음, 굴림,Verdana, ; font-size:14px; color:#993300; font-weight:bold; }
+.list {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#FFFFFF; letter-spacing:-1; font-weight:bold;}
+.red {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#FF0099; letter-spacing:-1; font-weight:bold;}
+.red2 {font-family:Verdana, 돋음, 굴림, ; font-size:12px; color:#CC3300; letter-spacing:-1; }
+.blue {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#6666ff; letter-spacing:-1; font-weight:bold;}
+.num{font-family:Verdana, ; font-size:11px; color:#000000;  font-weight:bold;}
+.red_n {font-family:Verdana,돋음 ; font-size:11px; color:#FF0099; letter-spacing:-1; font-weight:bold;}
+.red_n2 {font-family:Verdana,돋음 ; font-size:12px; color:#CC3300; letter-spacing:-1; font-weight:bold;}
+.blue_n {font-family:Verdana,돋음 ; font-size:11px; color:#6666ff;letter-spacing:-1;  font-weight:bold;}
+.b {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#000000; font-weight:bold;}
+.name {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#cc6600; font-weight:bold;}
+.txt {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#555555; line-height:1.4;}
+.txt_s {font-size:11px;}
+.c_txt {font-family:돋음, 굴림,Verdana,; font-size:12px; color:#969391;}
+.a_tit {font-family:돋음, 굴림,Verdana, ; font-size:12px; color:#555555; font-weight:bold;}
+.a_tit01 {font-family:돋음, 굴림,Verdana, ; font-size:13px; color:#555555; font-weight:bold;}
+.g_line {font-family:돋음; font-size:10px; color:#cccccc;}
+.g_line02 {font-family:돋음; font-size:10px; color:#666666;}
+
+
+
+/***** Form *****/
+.input03 {font-size:11px; color:#4C4C4C; font-family:돋음, 굴림, Verdana, arial; border:0px solid #CECECE; background-Color:#FFFFFF; padding:3 5 0 5px; height:20}/*입력*/
+.input02 {font-size:12px; color:#4C4C4C; font-family:돋음, 굴림, Verdana, arial; border:1px solid #dddddd; background-Color:#FFFFFF; padding:3 5 0 5px; }/*입력*/
+.input01 {font-size:11px; color:#4C4C4C; font-family:돋음, 굴림, Verdana, arial; border:1px solid #CECECE; background-Color:#F2F2F2; padding:3 5 0 5px; height:20}/*입력*/
+.input00 {font-size:11px; color:#4C4C4C; font-family:돋음, 굴림, Verdana, arial; border:1px solid #A8A8A8; background-Color:#FFFFFF; padding:3 5 0 5px; height:20}/*입력*/
+
+
+/***** Footer*****/
+.footer {font-family:돋음, 굴림,Verdana; font-size:11px; color:#666666; padding-right:10px;}
+.footer01 {font-family:돋음, 굴림,Verdana; font-size:11px; color:#838383;}
+
+

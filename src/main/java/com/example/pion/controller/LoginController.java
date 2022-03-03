@@ -46,4 +46,6 @@ public class LoginController {
 //		session.removeAttribute(name);    // 세션 특정 키에 있는 값 제거
 		return "login";
 	}
+	
+	
 }

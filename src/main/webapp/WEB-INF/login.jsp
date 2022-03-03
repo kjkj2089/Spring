@@ -17,8 +17,9 @@
 			f.password.focus();
 			return ;
 		}else{
-		 	f.action = "/common.do";
-			f.method.value = "authenticate";
+			console.dir(f.method);
+		 	f.action = "login_check.do";
+			//f.method.value = "authenticate";
 			f.submit();
 		}
 	}
@@ -39,8 +40,8 @@
 	}
 </script>
 
-<script language="JavaScript" type="text/JavaScript" src="/js/openwin.js"></script>
-<script language="JavaScript" type="text/JavaScript" src="/js/jquery.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="common/js/openwin.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="common/js/jquery.js"></script>
 
 <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="/css/common.css" type="text/css" />

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="member">
+	<insert id="saveMember" parameterType="Member">
+		INSERT INTO kjw_employee(
+			login_id,
+			password,
+			emp_name,
+			resident_registration_number,
+			my_birthday,
+			solar_yn,
+			married_anniver_date,
+			comp_couple_yn,
+			enter_date,
+			before_career_cnt,
+			company_career_cnt,
+			email,
+			hp_tel_no,
+			home_addr,
+			now_addr,
+			base_team_id,
+			job_code
+		)
+		VALUES(
+			#{login_id},
+			#{password},
+			#{emp_name},
+			#{resident_registration_number},
+			#{my_birthday},
+			#{solar_yn},
+			#{married_anniver_date},
+			#{comp_couple_yn},
+			sysdate,
+			#{before_career_cnt},
+			#{company_career_cnt},
+			#{email},
+			#{hp_tel_no},
+			#{home_addr},
+			#{now_addr},
+			#{base_team_id},
+			#{job_code}
+		)
+	</insert>
+<!-- 	<select id="findAllMember" resultType="Member">
+		SELECT *
+		FROM member m
+	</select> -->
+	
+	<select id="login_check" resultType="String">
+	select emp_name
+	from kjw_employee
+	where login_id=#{login_id}
+	AND password=#{password}
+	</select>
+</mapper>
