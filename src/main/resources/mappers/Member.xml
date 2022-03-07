@@ -3,44 +3,18 @@
 
 <mapper namespace="member">
 	<insert id="saveMember" parameterType="Member">
-		INSERT INTO kjw_employee(
-			login_id,
-			password,
-			emp_name,
-			resident_registration_number,
-			my_birthday,
-			solar_yn,
-			married_anniver_date,
-			comp_couple_yn,
-			enter_date,
-			before_career_cnt,
-			company_career_cnt,
-			email,
-			hp_tel_no,
-			home_addr,
-			now_addr,
-			base_team_id,
-			job_code
-		)
-		VALUES(
-			#{login_id},
-			#{password},
-			#{emp_name},
-			#{resident_registration_number},
-			#{my_birthday},
-			#{solar_yn},
-			#{married_anniver_date},
-			#{comp_couple_yn},
-			sysdate,
-			#{before_career_cnt},
-			#{company_career_cnt},
-			#{email},
-			#{hp_tel_no},
-			#{home_addr},
-			#{now_addr},
-			#{base_team_id},
-			#{job_code}
-		)
+	INSERT INTO kjw_employee(
+	login_id, PASSWORD, enter_date, job_code, auth_gubun_code, before_career_cnt, 
+	company_career_cnt, home_addr , now_addr, hp_tel_no, base_team_id, biz_grp_id, my_birthday, solar_yn, married_yn, married_anniver_date, enter_yn, comp_couple_yn,
+	insert_id, insert_datetime, emp_no, emp_name, resident_registration_number
+	)
+	VALUES(
+	#{login_id}, #{password}, #{enter_date}, #{job_code} ,#{auth_gubun_code},
+	#{before_career_cnt}, #{company_career_cnt}, #{home_addr}, #{now_addr}, #{hp_tel_no}, #{base_team_id},
+	#{biz_grp_id}, #{my_birthday}, #{solar_yn}, #{married_yn}, #{married_anniver_date}, #{enter_yn},
+	#{comp_couple_yn},'0000', sysdate, #{emp_no},
+	#{emp_name}, #{resident_registration_number}
+	)
 	</insert>
 <!-- 	<select id="findAllMember" resultType="Member">
 		SELECT *

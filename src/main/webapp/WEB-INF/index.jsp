@@ -6,9 +6,6 @@
 <title>PIONWORLD</title>
 
 <script language="javascript">
-
-	alert("로그인 실패");
-	
 	function fn_login(){
 		var f = document.getElementById("login");
 		if(f.login_id.value.length == 0){
@@ -20,10 +17,20 @@
 			f.password.focus();
 			return ;
 		}else{
+			
 		 	f.action = "login.do";
-			f.method.value = "authenticate";
+		 	
+		 	// console.log("${message}"); 
+		 
+		/*  else if(${message}=="logout")
+			 alert("logout"); */
+			//f.method.value = "authenticate";
 			f.submit();
 			
+			if(${message=="error"}){
+			 	alert("로그인 실패");
+			 
+			 }
 		}
 	}
 

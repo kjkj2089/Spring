@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<P> Login 성공 !! 
+<P> insert 성공 !! 
 </P> 
 </body>
 </html>

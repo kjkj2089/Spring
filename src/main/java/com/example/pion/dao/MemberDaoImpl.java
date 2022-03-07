@@ -10,8 +10,12 @@ import com.example.pion.domain.Member;
 @Repository
 public class MemberDaoImpl implements MemberDao{
 	
-	
-	
+	/*
+	 * MemberDao mapper;
+	 * 
+	 * @Autowired public MemberDaoImpl(SqlSession sqlSession) { mapper =
+	 * sqlSession.getMapper(MemberDao.class); }
+	 */
 	@Autowired
 	SqlSession sqlSession;
 	
@@ -22,8 +26,7 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public void saveMember(Member member) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.insert("saveMember",member);
 	}
 
 

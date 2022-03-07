@@ -20,12 +20,12 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public String loginCheck(MemberResponse member, HttpSession session) {
-		String name= memberDao.loginCheck(member);
-		if(name != null) {
+		String emp_name= memberDao.loginCheck(member);
+		if(emp_name != null) {
 			session.setAttribute("login_id",member.getLogin_id());
-			session.setAttribute("name", name);
+			session.setAttribute("emp_name", emp_name);
 		}
-		return name;
+		return emp_name;
 	}
 	
 	@Override
@@ -51,7 +51,12 @@ public class MemberServiceImpl implements MemberService {
 				req.getHome_addr(),
 				req.getNow_addr(),
 				req.getBase_team_id(),
-				req.getJob_code()
+				req.getJob_code(),
+				req.getAuth_gubun_code(),
+				req.getEmp_no(),
+				req.getBiz_grp_id(),
+				req.getMarried_yn(),
+				req.getEnter_yn()
 				);
 		
 		memberDao.saveMember(member);

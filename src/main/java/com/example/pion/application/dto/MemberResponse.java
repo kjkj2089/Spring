@@ -20,11 +20,17 @@ public class MemberResponse {
 	private String now_addr;
 	private String base_team_id;
 	private String job_code;
+	private String auth_gubun_code;
+	private String emp_no;
+	private String biz_grp_id;
+	private String married_yn;
+	private String enter_yn;
 	
 	public MemberResponse(String login_id, String password, String emp_name, String resident_registration_number,
 			String my_birthday, String solar_yn, String married_anniver_date, String comp_couple_yn, String enter_date,
 			String before_career_cnt, String company_career_cnt, String email, String hp_tel_no, String home_addr,
-			String now_addr, String base_team_id, String job_code) {
+			String now_addr, String base_team_id, String job_code, String auth_gubun_code, String emp_no, String biz_grp_id, String married_yn
+			, String enter_yn) {
 		super();
 		this.login_id = login_id;
 		this.password = password;
@@ -43,8 +49,14 @@ public class MemberResponse {
 		this.now_addr = now_addr;
 		this.base_team_id = base_team_id;
 		this.job_code = job_code;
+		this.auth_gubun_code = auth_gubun_code;
+		this.emp_no = emp_no;
+		this.married_yn = married_yn;
+		this.enter_yn = enter_yn;
 	}
 	
+
+
 	public static MemberResponse of(Member member) {
 		return new MemberResponse(
 				member.getLogin_id()
@@ -63,7 +75,12 @@ public class MemberResponse {
 				, member.getHome_addr()
 				, member.getNow_addr()
 				, member.getBase_team_id()
-				, member.getJob_code());
+				, member.getJob_code()
+				, member.getAuth_gubun_code()
+				, member.getEmp_no()
+				, member.getBiz_grp_id()
+				, member.getMarried_yn()
+				, member.getEnter_yn());
 	}
 	public String getLogin_id() {
 		return login_id;
@@ -200,5 +217,41 @@ public class MemberResponse {
 	public void setJob_code(String job_code) {
 		this.job_code = job_code;
 	}
-	
+	public String getAuth_gubun_code() {
+		return auth_gubun_code;
+	}
+
+	public void setAuth_gubun_code(String auth_gubun_code) {
+		this.auth_gubun_code = auth_gubun_code;
+	}
+
+	public String getEmp_no() {
+		return emp_no;
+	}
+
+	public void setEmp_no(String emp_no) {
+		this.emp_no = emp_no;
+	}
+	public String getBiz_grp_id() {
+		return biz_grp_id;
+	}
+
+	public void setBiz_grp_id(String biz_grp_id) {
+		this.biz_grp_id = biz_grp_id;
+	}
+
+	public String getMarried_yn() {
+		return married_yn;
+	}
+
+	public void setMarried_yn(String married_yn) {
+		this.married_yn = married_yn;
+	}
+	public String getEnter_yn() {
+		return enter_yn;
+	}
+
+	public void setEnter_yn(String enter_yn) {
+		this.enter_yn = enter_yn;
+	}
 }

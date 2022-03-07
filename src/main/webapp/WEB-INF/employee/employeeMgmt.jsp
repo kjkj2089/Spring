@@ -114,9 +114,6 @@
 </div>
 
 
-
-
-
 <script language=javascript>
 
 
@@ -144,7 +141,7 @@
 				return;
 			}  
 		} */
-/* 		//패스워드 chk
+ 		//패스워드 chk
 		if( isEmpty( f.password, "패스워드를 입력하세요.")) return;
 	
 		//패스워드 재확인
@@ -159,11 +156,11 @@
 		//이름 chk
 		if( isEmpty( f.emp_name, "이름을 입력하세오")) return;
 	
-		//주민등록번호 chk
+		/* //주민등록번호 chk
 		if( isNotValidPID(f.resd_no_1, f.resd_no_2) ){
 			return;	
 		}
-		f.resd_no.value = f.resd_no_1.value + "" + f.resd_no_2.value;
+		f.resd_no.value = f.resd_no_1.value + "" + f.resd_no_2.value; */
 		
 		//본인생일
 		if(isEmpty(f.my_birthday, "생일을 입력하세요")) return;
@@ -326,43 +323,10 @@
 		f.before_career_cnt.value = f.before_career_year.value + f.before_career_month.value;
 		f.company_career_cnt.value = f.company_career_year.value + f.company_career_month.value;
 			
-		//집주소 chk
-		if( f.home_zipcode.value == ''){
-		
-			alert("집 우편번호를 입력하세요");
-			f.home_zipcode.focus();
-			return;
-		}	
-	
-		if(isEmpty(f.home_detail_addr, "집주소를 입력하세요")) return;
-	
-		//집연락처 chk
-		if(isEmpty(f.home_tel_no, "집연락처를  입력하세요")) return;
-	
-		//현거주지 chk
-		if( f.now_zipcode.value == ''){
-		
-			alert("현거주지 우편번호를 입력하세요");
-			f.now_zipcode.focus();
-			return;
-		}
-		if(isEmpty(f.now_detail_addr, "현거주지 주소를 입력하세요")) return;
-	
-		//현거주지 연락처 chk
-		if(isEmpty(f.tel_no, "현거주지 연락처를  입력하세요")) return;
 	
 		//핸드폰 chk
 		if(isEmpty(f.hp_tel_no, "핸드폰번호를 입력하세요")) return;
 
-		//기술경력서 chk
-		if( f.career_history.value != '' ){
-		
-			f.career_history_yn.value = 'Y';
-			
-		}else{
-		
-			f.career_history_yn.value = 'N';
-		}
 
 		//양력여부
 		if( !f.check_yn.checked ){
@@ -373,16 +337,18 @@
 		
 			f.solar_yn.value = 'Y';
 		}
-		 */
-		f.action = "/employeement/newEmployee.do";
+		 
+		f.action = "/test.do";
 		
 	 	//저장
 		/* f.method.value ="insertNewEmployee";
 		
 		f.target = "action_frame";  */
+		
 		f.encoding="multipart/form-data";
 		f.submit();
 		
+		alert("회원가입 성공!!");
 	}
 	
 	//집우편번호 셋팅
@@ -479,7 +445,7 @@
 <input type="hidden" name="biz_grp_id" value="9">	<!-- 업무그룹ID -->
 <input type="hidden" name="team_lead'er_yn" value="N">	<!-- 부서장여부 -->
 <input type="hidden" name="comp_couple_yn" value=""><!-- 사내커플 여부 -->
-<input type="hidden" name="emp_no" value="">		<!-- 사번 -->
+<input type="hidden" name="emp_no" value="11">		<!-- 사번 -->
 
 
 	<tr>
