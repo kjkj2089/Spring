@@ -4,7 +4,7 @@
 <mapper namespace="member">
 	<insert id="saveMember" parameterType="Member">
 	INSERT INTO kjw_employee(
-	login_id, PASSWORD, enter_date, job_code, auth_gubun_code, before_career_cnt, 
+	login_id, password, enter_date, job_code, auth_gubun_code, before_career_cnt, 
 	company_career_cnt, home_addr , now_addr, hp_tel_no, base_team_id, biz_grp_id, my_birthday, solar_yn, married_yn, married_anniver_date, enter_yn, comp_couple_yn,
 	insert_id, insert_datetime, emp_no, emp_name, resident_registration_number
 	)
@@ -26,5 +26,13 @@
 	from kjw_employee
 	where login_id=#{login_id}
 	AND password=#{password}
+	</select>
+	
+	<select id="findAllMember" resultType="Member">
+	select login_id, password, enter_date, job_code, auth_gubun_code, before_career_cnt, 
+	company_career_cnt, home_addr , now_addr, hp_tel_no, base_team_id, biz_grp_id, my_birthday, solar_yn, married_yn, married_anniver_date, enter_yn, comp_couple_yn,
+	insert_id, insert_datetime, emp_no, emp_name, resident_registration_number
+	from kjw_employee
+    where login_id= #{login_id, jdbcType=VARCHAR}
 	</select>
 </mapper>

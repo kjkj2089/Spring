@@ -1,5 +1,8 @@
 package com.example.pion.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,8 @@ public class MemberServiceImpl implements MemberService {
 		String emp_name= memberDao.loginCheck(member);
 		if(emp_name != null) {
 			session.setAttribute("login_id",member.getLogin_id());
-			session.setAttribute("emp_name", emp_name);
+			session.setAttribute("password", member.getPassword());
+			//session.setAttribute("emp_name", emp_name);
 		}
 		return emp_name;
 	}
@@ -62,4 +66,11 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.saveMember(member);
 		return MemberResponse.of(member);
 	}
+	public List<MemberResponse> findAllMember(Member member, HttpSession session) {
+		return memberDao.findAllMember(member, session)
+				.stream()
+				.map(MemberResponse::of)
+				.collect(Collectors.toList());
+	}
+	
 }

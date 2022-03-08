@@ -20,18 +20,18 @@ public class MainController {
 	
 	@RequestMapping("/main/frameTop.do")
 	public String 프레임탑() {
-		return "main/frameTop";
+		return "/main/frameTop";
 	}
 	
 	
 	  @RequestMapping("/main/LeftMenu.do")
 	 public String 왼쪽메뉴() {
-		  return "main/LeftMenu";
+		  return "/main/LeftMenu";
 	  }
 	  
 	  @RequestMapping("/main/Welcome.do")
 	 public String 프레임바디() {
-		  return "main/Welcome";
+		  return "/main/Welcome";
 	  }
 	 
 }

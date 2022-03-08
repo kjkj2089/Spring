@@ -180,14 +180,14 @@
 	                  					<tr>
 	                    					<td width="9" valign="top"><img src="/images/main/left_menu_arrow.gif" width="9" height="9"></td>
 	                    					
-	                    						<td><a href="javascript:fn_dispMenu('/employee/employee/employeeList.do');" class="lm">직원조회</a></td>
+	                    						<td><a href="javascript:fn_dispMenu('/employee/employeeList.do');" class="lm">직원조회</a></td>
 	                    					
 	                  					</tr>
 
 	                  					<tr>
 	                    					<td width="9" valign="top"><img src="/images/main/left_menu_arrow.gif" width="9" height="9"></td>
 	                    					
-	                    						<td><a href="javascript:fn_dispMenu('/employee/employeeMgmt.do?method=modifyNewEmployee');" class="lm">개인정보</a></td>
+	                    						<td><a href="javascript:fn_dispMenu('/employee/modifyNewEmployee.do');" class="lm">개인정보</a></td>
 	                    					
 	                  					</tr>
 

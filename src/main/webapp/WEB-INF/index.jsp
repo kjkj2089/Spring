@@ -24,7 +24,7 @@
 		 
 		/*  else if(${message}=="logout")
 			 alert("logout"); */
-			//f.method.value = "authenticate";
+			f.method.value = "authenticate";
 			f.submit();
 			
 			if(${message=="error"}){

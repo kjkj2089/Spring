@@ -118,8 +118,8 @@
 <script language="javascript">
 function fn_logout(){
 	var frm = document.logout;
-	frm.action = "/common.do";
-	frm.method.value = "logOut";
+	frm.action = "/logout";
+	frm.method.value = "logOut"; 
 	frm.target = "_top";
     frm.submit();
 }
@@ -144,13 +144,11 @@ function fn_leftMenu_disp(upper_page_id,main_menu_name ){
     	   
        	 //   parent.frameset_body.children.frame_main_leftmenu.contentWindow.location.href = "/system/menu.do?method=searchLeftMenuList&upper_page_id="+upper_page_id+"&main_menu_name="+main_menu_name+"&scr_gubun_code=10&biz_grp_id=9&emp_no=20211102&auth_gubun_code=" + auth_gubun_code;
     }
-  
-    
     
 }
 
 function fn_main(){
-	top.location.replace("/main/Main.do");
+	top.location.replace("home.do");
 }
 </script>
 
@@ -165,7 +163,7 @@ function fn_main(){
     <td height="50" align="center"><table width="99%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td><a href="javascript:fn_main();"><img src="/images/main/top_logo.gif" width="111" height="42" border="0"></a></td>
-        <td width="50%" align="right" valign="bottom"><span class="name">김준완</span> 님 어서오세요~~^^ |  <a href="javascript:fn_logout();">로그아웃</a> </td>
+        <td width="50%" align="right" valign="bottom"><span class="name">${emp_name}</span> 님 어서오세요~~^^ |  <a href="javascript:fn_logout();">로그아웃</a> </td>
       </tr>
     </table></td>
   </tr>
@@ -177,20 +175,20 @@ function fn_main(){
              &nbsp;
                      
             
-        
+        <!-- 
 	        <a href="javascript:fn_leftMenu_disp('10006','게시판');" class="m">게시판</a>  
 	          &nbsp;<span class="g_line">|</span>&nbsp;
 	        
         
 	        <a href="javascript:fn_leftMenu_disp('1','휴가관리');" class="m">휴가관리</a>  
 	          &nbsp;<span class="g_line">|</span>&nbsp;
-	        
+	         -->
         
 	        <a href="javascript:fn_leftMenu_disp('2','직원관리');" class="m">직원관리</a>  
-	          &nbsp;<span class="g_line">|</span>&nbsp;
+	         <!--  &nbsp;<span class="g_line">|</span>&nbsp; -->
 	        
         
-	        <a href="javascript:fn_leftMenu_disp('4','비용관리');" class="m">비용관리</a>  
+	 <!--        <a href="javascript:fn_leftMenu_disp('4','비용관리');" class="m">비용관리</a>  
 	          &nbsp;<span class="g_line">|</span>&nbsp;
 	        
         
@@ -202,7 +200,7 @@ function fn_main(){
 	          &nbsp;<span class="g_line">|</span>&nbsp;
 	        
         
-	        <a href="javascript:fn_leftMenu_disp('10040','뉴스레터');" class="m">뉴스레터</a>  
+	        <a href="javascript:fn_leftMenu_disp('10040','뉴스레터');" class="m">뉴스레터</a>   -->
 	          
 	       
 		</td>

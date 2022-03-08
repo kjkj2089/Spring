@@ -16,20 +16,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class LoginController {
-	
-	@Autowired //필드주입방식
+
+	@Autowired // 필드주입방식
 	private MemberService memberService;
-	
+
 	public LoginController(MemberService memberService) {
 		this.memberService = memberService;
 	}
-	
+
 	@RequestMapping("/index")
 	public String 로그인_화면() {
 		log.info("========================== Login View ==========================");
 		return "index";
 	}
-	
+
 	/*
 	 * @RequestMapping("/login/session") public String 로그인_검증_세션_등록(@RequestBody
 	 * MemberRequest member, HttpSession session) { // 로그인 검증 후 세션 등록
@@ -39,47 +39,46 @@ public class LoginController {
 	 * 
 	 * return "login"; }
 	 */
-	
+
 	@RequestMapping("login.do")
-	public ModelAndView login_check(@ModelAttribute MemberResponse member, HttpSession session) {
-		String emp_name= memberService.loginCheck(member, session);
+	public String login_check(@ModelAttribute MemberResponse member, HttpSession session) {
+		String emp_name = memberService.loginCheck(member, session);
 		ModelAndView mav = new ModelAndView();
-		if( emp_name != null) {
-			mav.setViewName("main/home");
+		if (emp_name != null) {
+			// mav.setViewName("main/home");
 			mav.addObject("message", "success");
-			
+			return "redirect:main/home.do";
 		} else {
-			
-			mav.setViewName("login");
+
+			// mav.setViewName("login");
 			mav.addObject("message", "error");
-
+			return "login";
 		}
-		return mav;
+	}
 
+	@RequestMapping("/main/home.do")
+	public String 메인_화면() {
+		return "/main/home";
 	}
+
 	
+	  @RequestMapping("/logout")
+	  public String logout(HttpSession session, ModelAndView mav) { 
 	
-	 @RequestMapping("home.do") 
-	 public String 메인_화면() { return "redirect:test"; }
+	  memberService.logout(session);
+	  
+	  //mav.setViewName("login"); 
+	  //mav.addObject("message", "logout");
+	  
+	  // session.invalidate();
+	  
+	  return "index"; 
+	  }
 	 
-	
-	
-	@RequestMapping("logout.do")
-	public ModelAndView logout(HttpSession session, ModelAndView mav) {
-		memberService.logout(session);
-		mav.setViewName("login");
-		mav.addObject("message", "logout");
-		session.invalidate(); 
-		
-		return mav;
-	}
-	
-	@RequestMapping("/logout")
-	public String 로그아웃_세션_삭제(HttpSession session) {
-//      session.invalidate();                    // 세션에 저장된 모든 값 삭제
-//		session.removeAttribute(name);    // 세션 특정 키에 있는 값 제거
-		return "login";
-	}
-	
-	
+	/*
+	 * @RequestMapping("logout") public String 로그아웃_세션_삭제(HttpSession session) { //
+	 * session.invalidate(); // 세션에 저장된 모든 값 삭제 // session.removeAttribute(name); //
+	 * 세션 특정 키에 있는 값 제거 return "login"; }
+	 */
+
 }

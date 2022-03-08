@@ -1,5 +1,9 @@
 package com.example.pion.dao;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,12 +14,7 @@ import com.example.pion.domain.Member;
 @Repository
 public class MemberDaoImpl implements MemberDao{
 	
-	/*
-	 * MemberDao mapper;
-	 * 
-	 * @Autowired public MemberDaoImpl(SqlSession sqlSession) { mapper =
-	 * sqlSession.getMapper(MemberDao.class); }
-	 */
+
 	@Autowired
 	SqlSession sqlSession;
 	
@@ -27,6 +26,10 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public void saveMember(Member member) {
 		sqlSession.insert("saveMember",member);
+	}
+	public List<Member> findAllMember(Member member, HttpSession session) {
+		String loginId = (String) session.getAttribute("login_id");
+		return sqlSession.selectList("member.findAllMember", loginId);
 	}
 
 
