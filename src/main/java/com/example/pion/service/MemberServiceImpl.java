@@ -27,7 +27,7 @@ public class MemberServiceImpl implements MemberService {
 		if(emp_name != null) {
 			session.setAttribute("login_id",member.getLogin_id());
 			session.setAttribute("password", member.getPassword());
-			//session.setAttribute("emp_name", emp_name);
+			session.setAttribute("emp_name", emp_name);
 		}
 		return emp_name;
 	}
@@ -66,8 +66,15 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.saveMember(member);
 		return MemberResponse.of(member);
 	}
-	public List<MemberResponse> findAllMember(Member member, HttpSession session) {
-		return memberDao.findAllMember(member, session)
+	public List<MemberResponse> findAllMember(HttpSession session) {
+		return memberDao.findAllMember(session)
+				.stream()
+				.map(MemberResponse::of)
+				.collect(Collectors.toList());
+	}
+	
+	public List<MemberResponse> searchEmployeeList() {
+		return memberDao.searchEmployeeList()
 				.stream()
 				.map(MemberResponse::of)
 				.collect(Collectors.toList());

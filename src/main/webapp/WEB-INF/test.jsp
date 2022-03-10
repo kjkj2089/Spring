@@ -1,13 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta charset="EUC-KR">
 <title>Insert title here</title>
-
 </head>
 <body>
-<P> insert 靹标车 !! 
-</P> 
+<tr> 
+                      	<td valign="top"> 
+                        	<!-- 诀公弊缝府胶飘 矫累 -->
+                        	<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#CCCCCC">
+                          		<tr> 
+	                            	<td align="center" bgcolor="#eeeeee" class="b" >荤柳</td>
+	                            	<td align="center" bgcolor="#eeeeee" class="b" height="20">荤锅</td>
+									<td align="center" bgcolor="#eeeeee" class="b">流盔疙</td>
+									<td align="center" bgcolor="#eeeeee" class="b">林刮锅龋</td>
+									<td align="center" bgcolor="#eeeeee" class="b">肺弊牢ID</td>
+									<td align="center" bgcolor="#eeeeee" class="b">涝荤老磊</td>
+									<td align="center" bgcolor="#eeeeee" class="b">流鞭</td>
+									<td align="center" bgcolor="#eeeeee" class="b">鼻茄备盒</td>
+									<td align="center" bgcolor="#eeeeee" class="b">涝荤傈版仿</td>
+									<td align="center" bgcolor="#eeeeee" class="b">寸荤版仿</td>
+									<td align="center" bgcolor="#eeeeee" class="b">傈拳锅龋</td>
+									<td align="center" bgcolor="#eeeeee" class="b">勤靛迄锅龋</td>
+									<td align="center" bgcolor="#eeeeee" class="b">扁夯何辑</td>
+									<td align="center" bgcolor="#eeeeee" class="b">积老</td>
+									<td align="center" bgcolor="#eeeeee" class="b">剧仿咯何</td>
+									<td align="center" bgcolor="#eeeeee" class="b">搬去扁充老</td>
+									<td align="center" bgcolor="#eeeeee" class="b">涝荤贸府</td>
+									<td align="center" bgcolor="#eeeeee" class="b">版仿辑</td>
+                          		</tr>
+							
+
+							</table>
+							<!--格废 抛捞喉 场-->
+						</td>
+					</tr>
 </body>
 </html>

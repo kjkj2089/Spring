@@ -3,6 +3,11 @@ package com.example.pion.application.dto;
 import com.example.pion.domain.Member;
 
 public class MemberResponse {
+	@Override
+	   public String toString() {
+	      return "toString() : " + emp_name;
+	   }
+	
 	private String login_id;
 	private String password;
 	private String emp_name;

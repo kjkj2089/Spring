@@ -122,7 +122,6 @@
 		f.action = "/employee/employeeMgmt.do";
 		f.method.value = "selectEmployeeList_excel";
 		f.submit();
-		
 	}
 	
 	//검색
@@ -289,14 +288,43 @@
 									<td align="center" bgcolor="#eeeeee" class="b">경력서</td>
                           		</tr>
 							
+							<tr>
+	                               <td align="center" bgcolor="#FFFFFF">
+	                               
+	                               <a href="javascript:fn_emp_image(20041103,'박묵용');">
+	                               		<img name="emp_image" src="/upload/employee/emp_image/20041103\200411032.jpg" border="0" height="30">
+	                               </a>
+	                               
+	                               </td>
+	                               <td align="center" bgcolor="#FFFFFF"><a href="javascript:fn_emp_mgmt(20041103);">${EmpList[0].emp_name}</a> </td>
+									<td align="center" bgcolor="#FFFFFF"><a href="javascript:fn_emp_mgmt(20041103);">박묵용</a> </td>
+	
+									<td align="center" bgcolor="#FFFFFF">******-******* </td>
+	
+		
+									<td align="center" bgcolor="#FFFFFF">taurus64 </td>
+									<td align="center" bgcolor="#FFFFFF">2004-11-24 </td>
+									<td align="center" bgcolor="#FFFFFF">상무 </td>
+									<td align="center" bgcolor="#FFFFFF">관리자 </td>
+									<td align="center" bgcolor="#FFFFFF">16년 00개월 </td>
+									<td align="center" bgcolor="#FFFFFF">03년 03개월 </td>
+									<td align="center" bgcolor="#FFFFFF">010-2723-2806 </td>
+									<td align="center" bgcolor="#FFFFFF">010-2723-2806 </td>
+									<td align="center" bgcolor="#FFFFFF">상무이사 </td>
+									<td align="center" bgcolor="#FFFFFF">04/05 </td>
+									<td align="center" bgcolor="#FFFFFF">음력 </td>
+									<td align="center" bgcolor="#FFFFFF">11/21 </td>
+									<td align="center" bgcolor="#FFFFFF">처리 </td>
+									<td align="center" bgcolor="#FFFFFF">
+
+									</td>
+		                        </tr>
 
 							</table>
 							<!--목록 테이블 끝-->
 						</td>
 					</tr>
-					<tr>
-						<td>&nbsp;</td>
-					</tr>
+				
 					<tr>
                        	<td>
                        		<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">

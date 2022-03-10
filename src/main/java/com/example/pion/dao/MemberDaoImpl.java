@@ -27,9 +27,12 @@ public class MemberDaoImpl implements MemberDao{
 	public void saveMember(Member member) {
 		sqlSession.insert("saveMember",member);
 	}
-	public List<Member> findAllMember(Member member, HttpSession session) {
+	public List<Member> findAllMember(HttpSession session) {
 		String loginId = (String) session.getAttribute("login_id");
 		return sqlSession.selectList("member.findAllMember", loginId);
+	}
+	public List<Member> searchEmployeeList(){
+		return sqlSession.selectList("member.searchEmployeeList");
 	}
 
 
