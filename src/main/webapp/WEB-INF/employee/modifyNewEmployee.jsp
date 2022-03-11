@@ -118,8 +118,7 @@
 	function fn_update(){
 	
 		var f = document.formEmployee;
-		
-		if( f.login_id.value == "" ) {
+		/* if( f.login_id.value == "" ) {
 
 			alert("아이디를 입력하세요.");
 			f.login_id.focus();
@@ -420,17 +419,14 @@
 		
 			f.comp_couple_yn.value = 'N';
 			
-		}
-		
-		//복지종류코드
-		f.walfare_kind_code.value = '10';
+		} */
 		
 		f.action = "/employee/employeeMgmt.do";
 		f.method.value = "modifyNewEmployeeRst";
 		f.target = "action_frame";
 		f.encoding="multipart/form-data";
 		f.submit();
-		 
+		alert("update 성공!!!");
 	}
 	
 	//집우편번호 셋팅
@@ -478,8 +474,9 @@
 	function fn_loginIdCheck(){
 	
 	var f = document.formEmployee;
+	f.method.value="searchLoginIdChkPop";
 	if( f.login_id.value == '' ) {
-
+	
 			alert("아이디를 입력해 주세요.");
 			f.login_id.focus();
 			return;
@@ -494,7 +491,7 @@
 	function fn_loginIdChk(flag_value, login_id) {
 
 		var f = document.formEmployee;
-
+	
 		f.login_id.value = login_id;
 
 		// 아이디 중복체크 플레그 변경
@@ -619,8 +616,8 @@
 								<td colspan="3" bgcolor="#FFFFFF">
   
 
-									<input name="resd_no_1" type="text" class="input00" size="12" maxlength="6" value="${emp[0].resident_registration_number}">
-									- <input name="resd_no_2" type="text" class="input00" size="12" maxlength="7" value="">
+									<input name="resd_no_1" type="text" class="input00" size="12" maxlength="6" value="${emp[0].resd_no.substring(0,6)}">
+									- <input name="resd_no_2" type="text" class="input00" size="12" maxlength="7" value="${emp[0].resd_no.substring(6,12)}">
 
 		
     
@@ -690,12 +687,12 @@
 							<tr> 
   								<td bgcolor="#eeeeee"><span class="red_n">*</span>기본부서ID</td>
   								<td bgcolor="#FFFFFF">
-								  	<input name="base_team_id" type="hidden" value="${emp[0].base_team_id}">
-								  	<input name="base_team_name" type="text" class="input03" size="12" value="" readOnly>
+								  	<input name="base_team_id" type="hidden" value="">
+								  	<input name="base_team_name" type="text" class="input03" size="12" value="${emp[0].base_team_id}" readOnly>
 								<td bgcolor="#eeeeee"><span class="red_n">*</span>업무그룹ID</td>
 								<td bgcolor="#FFFFFF" colspan="2">
 									<input name="biz_grp_id" type="hidden" value="9" >
-									<input name="biz_group_name" type="text" class="input03" size="12" value="" readOnly>
+									<input name="biz_group_name" type="text" class="input03" size="12" value="${emp[0].biz_grp_id}" readOnly>
 								</td>
 							</tr>
 							<tr>
@@ -705,7 +702,7 @@
  								</td>
  								<td bgcolor="#eeeeee"><font color="#eeeeee">*</font>  E-MAIL </td>
 								<td bgcolor="#FFFFFF" colspan="2">
-  									<input type="text" name="email" class="input00" size="30" value=""> 
+  									<input type="text" name="email" class="input00" size="30" value="${emp[0].email}"> 
 									<span class="c_txt">@pionnet.co.kr</span>
  								</td>
 							</tr>
@@ -713,16 +710,16 @@
 								<td width="10%" bgcolor="#eeeeee"><font color="#eeeeee">*</font>입사전경력</td>
 								<td bgcolor="#FFFFFF"><a href="#"></a>
 
-									<input name="before_career_year" type="text" class="input00" size="4" maxLength="2" value="">년&nbsp;&nbsp;
-									<input name="before_career_month" type="text" class="input00" size="4" maxLength="2" value="">월 
+									<input name="before_career_year" type="text" class="input00" size="4" maxLength="2" value="${emp[0].before_career_cnt.substring(0,2)}">년
+									<input name="before_career_month" type="text" class="input00" size="4" maxLength="2" value="${emp[0].before_career_cnt.substring(2,4)}">월 
 
 									<span class="c_txt">예) 02년 03월 /두자리씩 입력해 주세요.</span>
 								</td>
 								<td width="10%" bgcolor="#eeeeee"><font color="#eeeeee">*</font>당사경력</td>
 								<td bgcolor="#FFFFFF" colspan="2">
 
-									<input name="company_career_year" type="text" class="input00" size="4" maxLength="2" value="">년&nbsp;&nbsp;
-									<input name="company_career_month" type="text" class="input00" size="4" maxLength="2" value="">월
+									<input name="company_career_year" type="text" class="input00" size="4" maxLength="2" value="${emp[0].company_career_cnt.substring(0,2)}">년&nbsp;&nbsp;
+									<input name="company_career_month" type="text" class="input00" size="4" maxLength="2" value="${emp[0].company_career_cnt.substring(2,4)}">월
 
 
   									<span class="c_txt">예) 02년 03월 /두자리씩 입력해 주세요.</span>
@@ -734,7 +731,7 @@
 							 		<table width="100%" border="0" cellspacing="2" cellpadding="0">
 										<tr> 
 											<td height="22">
-											  	<input name="home_addr" type="text" class="input01" size="40" readonly value=""> 
+											  	<input name="home_addr" type="text" class="input01" size="40" readonly value="${emp[0].home_addr}"> 
 											</td>
 										</tr>
 									</table>
@@ -747,7 +744,7 @@
 									
 										<tr> 
 											<td height="22" colspan="2">
-										  		<input name="now_addr" type="text" class="input01" size="40" readonly value=""> 
+										  		<input name="now_addr" type="text" class="input01" size="40" readonly value="${emp[0].now_addr}"> 
 										  		<td><font color="#eeeeee">*</font> 집주소와 동일
 											  	<input name="home_addr_equal" type="checkbox" class="input00" size="8" value="" onClick="fn_addr_equal()">
 	    									</td>

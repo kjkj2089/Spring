@@ -3,15 +3,11 @@ package com.example.pion.application.dto;
 import com.example.pion.domain.Member;
 
 public class MemberResponse {
-	@Override
-	   public String toString() {
-	      return "toString() : " + emp_name;
-	   }
-	
+
 	private String login_id;
 	private String password;
 	private String emp_name;
-	private String resident_registration_number;
+	private String resd_no;
 	private String my_birthday;
 	private String solar_yn;
 	private String married_anniver_date;
@@ -31,7 +27,7 @@ public class MemberResponse {
 	private String married_yn;
 	private String enter_yn;
 	
-	public MemberResponse(String login_id, String password, String emp_name, String resident_registration_number,
+	public MemberResponse(String login_id, String password, String emp_name, String resd_no,
 			String my_birthday, String solar_yn, String married_anniver_date, String comp_couple_yn, String enter_date,
 			String before_career_cnt, String company_career_cnt, String email, String hp_tel_no, String home_addr,
 			String now_addr, String base_team_id, String job_code, String auth_gubun_code, String emp_no, String biz_grp_id, String married_yn
@@ -40,7 +36,7 @@ public class MemberResponse {
 		this.login_id = login_id;
 		this.password = password;
 		this.emp_name = emp_name;
-		this.resident_registration_number = resident_registration_number;
+		this.resd_no = resd_no;
 		this.my_birthday = my_birthday;
 		this.solar_yn = solar_yn;
 		this.married_anniver_date = married_anniver_date;
@@ -67,7 +63,7 @@ public class MemberResponse {
 				member.getLogin_id()
 				, member.getPassword()
 				, member.getEmp_name()
-				, member.getResident_registration_number()
+				, member.getResd_no()
 				, member.getMy_birthday()
 				, member.getSolar_yn()
 				, member.getMarried_anniver_date()
@@ -111,12 +107,12 @@ public class MemberResponse {
 		this.emp_name = emp_name;
 	}
 
-	public String getResident_registration_number() {
-		return resident_registration_number;
+	public String getResd_no() {
+		return resd_no;
 	}
 
-	public void setResident_registration_number(String resident_registration_number) {
-		this.resident_registration_number = resident_registration_number;
+	public void setResd_no(String resd_no) {
+		this.resd_no = resd_no;
 	}
 
 	public String getMy_birthday() {

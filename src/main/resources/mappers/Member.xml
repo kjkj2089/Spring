@@ -6,21 +6,23 @@
 	INSERT INTO kjw_employee(
 	login_id, password, enter_date, job_code, auth_gubun_code, before_career_cnt, 
 	company_career_cnt, home_addr , now_addr, hp_tel_no, base_team_id, biz_grp_id, my_birthday, solar_yn, married_yn, married_anniver_date, enter_yn, comp_couple_yn,
-	insert_id, insert_datetime, emp_no, emp_name, resident_registration_number
+	insert_id, insert_datetime, emp_no, emp_name, resd_no
 	)
 	VALUES(
 	#{login_id}, #{password}, #{enter_date}, #{job_code} ,#{auth_gubun_code},
 	#{before_career_cnt}, #{company_career_cnt}, #{home_addr}, #{now_addr}, #{hp_tel_no}, #{base_team_id},
 	#{biz_grp_id}, #{my_birthday}, #{solar_yn}, #{married_yn}, #{married_anniver_date}, #{enter_yn},
-	#{comp_couple_yn},'0000', sysdate, #{emp_no},
-	#{emp_name}, #{resident_registration_number}
+	#{comp_couple_yn},'0000', sysdate, TO_CHAR(SYSDATE, 'yymm') || TO_CHAR(LPAD(EVERYDAY_SEQ.NEXTVAL, 2, 0)),
+	#{emp_name}, #{resd_no}
 	)
 	</insert>
-<!-- 	<select id="findAllMember" resultType="Member">
-		SELECT *
-		FROM member m
-	</select> -->
+
+	<select id="searchLoginIdChkPop" resultType="int">
+	select count(login_id)
+	from kjw_employee
+	where login_id=#{login_id}
 	
+	</select>
 	<select id="login_check" resultType="String">
 	select emp_name
 	from kjw_employee
@@ -29,18 +31,74 @@
 	</select>
 	
 	<select id="findAllMember" resultType="Member">
-	select login_id, password, enter_date, job_code, auth_gubun_code, before_career_cnt, 
-	company_career_cnt, home_addr , now_addr, hp_tel_no, base_team_id, biz_grp_id, my_birthday, solar_yn, married_yn, married_anniver_date, enter_yn, comp_couple_yn,
-	insert_id, insert_datetime, emp_no, emp_name, resident_registration_number
-	from kjw_employee
-    where login_id= #{login_id, jdbcType=VARCHAR}
+	select login_id, password, emp_name, resd_no, my_birthday, solar_yn,
+	married_anniver_date, comp_couple_yn , enter_date, before_career_cnt, company_career_cnt,
+	email, hp_tel_no, home_addr, now_addr, om.team_name as base_team_id, A.code_name as job_code,
+	B.code_name as auth_gubun_code , emp_no, biz_grp_id, married_yn, enter_yn
+	from kjw_employee e, ORG_MST OM,
+	(SELECT CD.CODE_ID, CD.CODE_NAME
+	FROM CODE_DTL CD
+	WHERE CD.COMM_CODE_ID = 'E001') A,
+	(SELECT CD.CODE_ID, CD.CODE_NAME
+	FROM CODE_DTL CD
+	WHERE CD.COMM_CODE_ID = 'E002') B
+	WHERE A.CODE_ID = E.JOB_CODE
+	AND B.CODE_ID = E.AUTH_GUBUN_CODE
+	AND OM.TEAM_ID = E.BASE_TEAM_ID
+    and login_id= #{login_id}
 	</select>
 	
-	<select id="searchEmployeeList" resultType="Member">
-	select login_id, password, enter_date, job_code, auth_gubun_code, before_career_cnt, 
-	company_career_cnt, home_addr , now_addr, hp_tel_no, base_team_id, biz_grp_id, my_birthday, solar_yn, married_yn, married_anniver_date, enter_yn, comp_couple_yn,
-	insert_id, insert_datetime, emp_no, emp_name, resident_registration_number
-	from kjw_employee
+	<select id="searchEmployeeList" resultType="Member" parameterType="Map">
+	select login_id, password, emp_name, resd_no, my_birthday, solar_yn,
+	married_anniver_date, comp_couple_yn , enter_date, before_career_cnt, company_career_cnt,
+	email, hp_tel_no, home_addr, now_addr, om.team_name as base_team_id, A.code_name as job_code,
+	B.code_name as auth_gubun_code , emp_no, biz_grp_id, married_yn, enter_yn
+	from kjw_employee e, ORG_MST OM,
+	(SELECT CD.CODE_ID, CD.CODE_NAME
+	FROM CODE_DTL CD
+	WHERE CD.COMM_CODE_ID = 'E001') A,
+	(SELECT CD.CODE_ID, CD.CODE_NAME
+	FROM CODE_DTL CD
+	WHERE CD.COMM_CODE_ID = 'E002') B
+	WHERE A.CODE_ID = E.JOB_CODE
+	AND B.CODE_ID = E.AUTH_GUBUN_CODE
+	AND OM.TEAM_ID = E.BASE_TEAM_ID
+ 	<if test="param_emp_name != null and param_emp_name != ''">
+	AND e.emp_name = #{param_emp_name, jdbcType=VARCHAR}</if>
+ 	<if test="base_team_id != null and base_team_id !=''"> 
+	AND e.base_team_id = #{base_team_id, jdbcType=VARCHAR}</if>
+	<if test="job_code != null and job_code !=''"> 
+	AND e.job_code = #{job_code, jdbcType=VARCHAR}</if>
+	<if test="enter_yn != null and enter_yn !=''"> 
+	AND e.enter_yn = #{enter_yn, jdbcType=VARCHAR}</if>
+	AND ROWNUM &lt;= #{rowsPerPage}
+	CONNECT BY PRIOR om.team_id = om.upper_team_id
+	START WITH om.team_name = '대표이사'
+	AND LEVEL &lt;= 5
 	
+
 	</select>
+	
+	<update id="modifyNewEmployeeRst" >
+	update kjw_employee
+	set password = #{password, jdbcType=VARCHAR},
+	emp_no = #{emp_no, jdbcType=VARCHAR},
+	resd_no = #{resd_no, jdbcType=VARCHAR},
+	solar_yn = #{solar_yn, jdbcType=VARCHAR},
+	married_anniver_date = #{married_anniver_date, jdbcType=VARCHAR},
+	comp_couple_yn = #{comp_couple_yn, jdbcType=VARCHAR},
+	enter_date = #{enter_date, jdbcType=VARCHAR},
+	before_career_cnt = #{before_career_cnt, jdbcType=VARCHAR},
+	company_career_cnt = #{company_career_cnt, jdbcType=VARCHAR},
+	email = #{email, jdbcType=VARCHAR},
+	hp_tel_no = #{hp_tel_no, jdbcType=VARCHAR},
+	home_addr = #{home_addr, jdbcType=VARCHAR},
+	now_addr = #{now_addr, jdbcType=VARCHAR},
+	base_team_id = #{base_team_id, jdbcType=VARCHAR},
+	job_code = #{job_code, jdbcType=VARCHAR},
+	auth_gubun_code = #{auth_gubun_code, jdbcType=VARCHAR},
+	biz_grp_id = #{biz_grp_id, jdbcType=VARCHAR},
+	married_yn = #{married_yn, jdbcType=VARCHAR}
+	where login_id = #{login_id}
+	</update>
 </mapper>

@@ -1,6 +1,9 @@
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <TITLE>신입등록</TITLE>
 
 <META http-equiv="Cache-Control" content="no-cache"/>
@@ -118,16 +121,15 @@
 
 
 	function fn_insert(){
-	
 		var f = document.formEmployee;
 		
-		//아이디 chk
+		/* //아이디 chk
 		if( f.login_id.value == ''){
 			
 			alert("아이디를 입력하세요.");
 			f.login_id.focus();
 			return;
-		}/* else{
+		} else{
 		
 		 	// 아이디 중복체크했는지 확인
 			 if( f.login_id_flag.value == "N" ) {
@@ -140,7 +142,7 @@
 				// 아이디 valid 체크되지 않음
 				return;
 			}  
-		} */
+		} 
  		//패스워드 chk
 		if( isEmpty( f.password, "패스워드를 입력하세요.")) return;
 	
@@ -160,7 +162,7 @@
 		if( isNotValidPID(f.resd_no_1, f.resd_no_2) ){
 			return;	
 		}
-		f.resd_no.value = f.resd_no_1.value + "" + f.resd_no_2.value; */
+		f.resd_no.value = f.resd_no_1.value + "" + f.resd_no_2.value; 
 		
 		//본인생일
 		if(isEmpty(f.my_birthday, "생일을 입력하세요")) return;
@@ -336,14 +338,12 @@
 		}else{
 		
 			f.solar_yn.value = 'Y';
-		}
-		 
-		f.action = "/test.do";
-		
+		} */
+		f.action = "/employee/employeeMgmt.do";
 	 	//저장
-		/* f.method.value ="insertNewEmployee";
+		f.method.value ="insertNewEmployee";
 		
-		f.target = "action_frame";  */
+		f.target = "action_frame";
 		
 		f.encoding="multipart/form-data";
 		f.submit();
@@ -355,7 +355,6 @@
 	function fn_setZipCodeHome(zipCode, base_addr){
 		var f = document.formEmployee;
 		
-		f.home_zipcode.value = zipCode;
 		f.home_addr.value = base_addr;
 	}
 	
@@ -364,7 +363,6 @@
 	
 		var f = document.formEmployee;
 		
-		f.now_zipcode.value = zipCode;
 		f.now_addr.value = base_addr;
 	}
 	
@@ -374,7 +372,6 @@
 		window.close();
 	
 	}
-	
 	//중복 아이디 찾기 팝업
 	function fn_loginIdCheck(){
 	
@@ -387,7 +384,6 @@
 			return;
 
 		} else {
-			
 			//아이디 중복팝업 
 			openNoScrollWin('/employee/employeeMgmt.do', '', '아이디중복찾기팝업', '370', '350', '&method=searchLoginIdChkPop&cb_func=fn_loginIdChk&login_id=' + f.login_id.value, 'Y');
 		}
@@ -445,7 +441,7 @@
 <input type="hidden" name="biz_grp_id" value="9">	<!-- 업무그룹ID -->
 <input type="hidden" name="team_lead'er_yn" value="N">	<!-- 부서장여부 -->
 <input type="hidden" name="comp_couple_yn" value=""><!-- 사내커플 여부 -->
-<input type="hidden" name="emp_no" value="11">		<!-- 사번 -->
+<input type="hidden" name="emp_no" value="12">		<!-- 사번 -->
 
 
 	<tr>

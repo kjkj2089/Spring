@@ -1,6 +1,7 @@
 package com.example.pion.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
@@ -30,6 +31,11 @@ public class MemberServiceImpl implements MemberService {
 			session.setAttribute("emp_name", emp_name);
 		}
 		return emp_name;
+	}
+	
+	public int searchLoginIdChkPop(String loginId) {
+		int login_id=memberDao.searchLoginIdChkPop(loginId);
+		return login_id;
 	}
 	
 	@Override
@@ -73,11 +79,14 @@ public class MemberServiceImpl implements MemberService {
 				.collect(Collectors.toList());
 	}
 	
-	public List<MemberResponse> searchEmployeeList() {
-		return memberDao.searchEmployeeList()
+	public List<MemberResponse> searchEmployeeList(Map<String,Object> parameters) {
+		return memberDao.searchEmployeeList(parameters)
 				.stream()
 				.map(MemberResponse::of)
 				.collect(Collectors.toList());
 	}
-	
+	public void modifyNewEmployeeRst(Member member){
+		memberDao.modifyNewEmployeeRst(member);
+	}
 }
+

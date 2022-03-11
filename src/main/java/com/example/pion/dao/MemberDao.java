@@ -1,6 +1,7 @@
 package com.example.pion.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,5 +12,7 @@ public interface MemberDao {
 	public String loginCheck(MemberResponse member);
 	public void saveMember(Member member);
 	public List<Member> findAllMember(HttpSession session);
-	public List<Member> searchEmployeeList();
+	public List<Member> searchEmployeeList(Map<String,Object> parameters);
+	public int modifyNewEmployeeRst(Member member);
+	public int searchLoginIdChkPop(String login_id);
 }

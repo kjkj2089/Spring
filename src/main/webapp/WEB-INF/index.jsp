@@ -20,7 +20,7 @@
 			
 		 	f.action = "login.do";
 		 	
-		 	// console.log("${message}"); 
+		 	 console.log("${message}"); 
 		 
 		/*  else if(${message}=="logout")
 			 alert("logout"); */
@@ -36,9 +36,13 @@
 
 	//신입 등록 팝업
 	function fn_viewNewEmp(){
-	
+		
+		var f = document.getElementById("login");
 		var theURL="/employee/employeeMgmt.do";
 		var param ="&method=viewNewEmployee";
+		
+		f.method.value="viewNewEmployee";
+		
 		
 		openNoScrollWin(theURL, "VIEW_NEWEMP", "신입등록", "1000", "750", param);
 	}

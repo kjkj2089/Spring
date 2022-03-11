@@ -1,6 +1,7 @@
 package com.example.pion.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,15 +26,21 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public void saveMember(Member member) {
-		sqlSession.insert("saveMember",member);
+		sqlSession.insert("member.saveMember",member);
 	}
 	public List<Member> findAllMember(HttpSession session) {
 		String loginId = (String) session.getAttribute("login_id");
 		return sqlSession.selectList("member.findAllMember", loginId);
 	}
-	public List<Member> searchEmployeeList(){
-		return sqlSession.selectList("member.searchEmployeeList");
+	public List<Member> searchEmployeeList(Map<String,Object> parameters){
+		System.out.println(parameters.get("job_code"));
+		return sqlSession.selectList("member.searchEmployeeList", parameters);
 	}
-
+	public int modifyNewEmployeeRst(Member member){
+		return sqlSession.update("member.modifyNewEmployeeRst", member);
+	}
+	public int searchLoginIdChkPop(String login_id) {
+		return sqlSession.selectOne("member.searchLoginIdChkPop", login_id);
+	}
 
 }

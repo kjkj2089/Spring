@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+
+
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
@@ -115,13 +119,38 @@
 </div>
 <script language="JavaScript">
 
-	
+/* 	   $(function() {
+	   // 사용자에게 html select 보이는 것 위해 설정
+	   if (${paging.cntPage} == "10") {
+	      $("#rowsPerPage").val("10").prop("selected", true);
+	   } else if (${paging.cntPage} == "20") {
+	      $("#rowsPerPage").val("20").prop("selected", true);
+	   } else if (${paging.cntPage} == "30") {
+	      $("#rowsPerPage").val("30").prop("selected", true);
+	   } else if (${paging.cntPage} == "100") {
+	      $("#rowsPerPage").val("100").prop("selected", true);
+	   } else if (${paging.cntPage} == "1000") {
+	      $("#rowsPerPage").val("1000").prop("selected", true);
+	   } else {
+	      alert("올바르지 않은 값입니다.")
+	   }
+	}); */
 	
 	function fn_excel(){
 	var f = document.form_emp;
 		f.action = "/employee/employeeMgmt.do";
 		f.method.value = "selectEmployeeList_excel";
 		f.submit();
+		
+	}
+	
+	//신입 등록 팝업
+	function fn_viewNewEmp(){
+	
+		var theURL="/employee/employeeMgmt.do";
+		var param ="&method=viewNewEmployee";
+		f.method.value="viewNewEmployee";
+		openNoScrollWin(theURL, "VIEW_NEWEMP", "신입등록", "1000", "750", param);
 	}
 	
 	//검색
@@ -169,7 +198,7 @@
 	
 </script>    
 <body>
-<form name="form_emp" method="post">
+<form name="form_emp" method="post" accept-charset="utf-8">
 	<input type="hidden" name="method">
 
 	<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
@@ -206,12 +235,19 @@
                                                             <td>
                                                                 <input name="param_emp_name" type="text" class="input00" value="" size="20">
 									        		        </td>
-		                                    		        <td width="100" class="b">ㆍ기본부서</td>
-                                                            <td>
-                                                                <input name="param_team_id" type="text" class="input01" value="" size="10" readOnly>
-                                                                <input name="param_team_name" type="text" class="input01" value="" size="20" readOnly>
-                                                                <img src="/images/btn/btn_search.gif" width="52" height="22" align="absmiddle" onClick="searchBaseOrgPop('fn_setTeam', 'Y');">
-		                                    		        </td>
+		                                    		       <td width="100" class="b">ㆍ기본부서</td>
+																<td><select name="base_team_id">
+																		<option value="" selected>전체</option>
+																		<option value="2">대표이사</option>
+																		<option value="3">상무이사</option>
+																		<option value="4">경영지원부</option>
+																		<option value="5">CM사업부</option>
+																		<option value="10">퇴사자</option>
+																		<option value="100017">입사대기</option>
+																		<option value="100044">SC사업부</option>
+																		<option value="100052">CF사업부</option>
+																		<option value="100135">신입사원</option>
+																</select></td>
 		                                    		        <td width="100" class="b">ㆍ직급</td>
 		                                    		        <td>
 		                                    		        	<select name="job_code">
@@ -230,12 +266,12 @@
 		                                    		        <td width="100" class="b">ㆍ입사처리여부</td>
                                                             <td>
                                                                 <select name="enter_yn" id="enter_yn">
-                                                                	<option value="A">전체</option>
-                                                                	<option value="Y"   selected   >처리</option>
+                                                                	<option value=""    selected  >전체</option>
+                                                                	<option value="Y" >처리</option>
                                                                 	<option value="N" >미처리</option>
                                                                 </select>
                                                                 <a href="javascript:fn_search();"><img src="/images/btn/btn_search2.gif" width="52" height="22" border="0" align="absmiddle"></a>
-                                                                <a href="javascript:fn_excel();"><img src="/images/btn/btn_excel.gif" width="52" height="22" border="0" align="absmiddle"></a>
+                                                                <a href="javascript:fn_viewNewEmp();"><img src="/images/btn/btn_excel.gif" width="52" height="22" border="0" align="absmiddle"></a>
 									        		        </td>
                                                         </tr>
                                                     </table>
@@ -285,9 +321,12 @@
 									<td align="center" bgcolor="#eeeeee" class="b">양력여부</td>
 									<td align="center" bgcolor="#eeeeee" class="b">결혼기념일</td>
 									<td align="center" bgcolor="#eeeeee" class="b">입사처리</td>
-									<td align="center" bgcolor="#eeeeee" class="b">경력서</td>
                           		</tr>
-							
+						
+						
+                       		<c:choose>
+                        	<c:when test="${!empty EmpList}">
+                        	<c:forEach var="board" items="${EmpList}">
 							<tr>
 	                               <td align="center" bgcolor="#FFFFFF">
 	                               
@@ -296,30 +335,28 @@
 	                               </a>
 	                               
 	                               </td>
-	                               <td align="center" bgcolor="#FFFFFF"><a href="javascript:fn_emp_mgmt(20041103);">${EmpList[0].emp_name}</a> </td>
-									<td align="center" bgcolor="#FFFFFF"><a href="javascript:fn_emp_mgmt(20041103);">박묵용</a> </td>
+	                               <td align="center" bgcolor="#FFFFFF"><a href="javascript:fn_emp_mgmt(20041103);">${board.emp_no}</a> </td>
+									<td align="center" bgcolor="#FFFFFF"><a href="javascript:fn_emp_mgmt(20041103);">${board.emp_name}</a> </td>
 	
-									<td align="center" bgcolor="#FFFFFF">******-******* </td>
-	
-		
-									<td align="center" bgcolor="#FFFFFF">taurus64 </td>
-									<td align="center" bgcolor="#FFFFFF">2004-11-24 </td>
-									<td align="center" bgcolor="#FFFFFF">상무 </td>
-									<td align="center" bgcolor="#FFFFFF">관리자 </td>
-									<td align="center" bgcolor="#FFFFFF">16년 00개월 </td>
-									<td align="center" bgcolor="#FFFFFF">03년 03개월 </td>
-									<td align="center" bgcolor="#FFFFFF">010-2723-2806 </td>
-									<td align="center" bgcolor="#FFFFFF">010-2723-2806 </td>
-									<td align="center" bgcolor="#FFFFFF">상무이사 </td>
-									<td align="center" bgcolor="#FFFFFF">04/05 </td>
-									<td align="center" bgcolor="#FFFFFF">음력 </td>
-									<td align="center" bgcolor="#FFFFFF">11/21 </td>
-									<td align="center" bgcolor="#FFFFFF">처리 </td>
-									<td align="center" bgcolor="#FFFFFF">
-
-									</td>
+									<td align="center" bgcolor="#FFFFFF">${board.resd_no.substring(0,6)}-${board.resd_no.substring(6,12)}</td>
+									<td align="center" bgcolor="#FFFFFF">${board.login_id}</td>
+									<td align="center" bgcolor="#FFFFFF">${board.enter_date} </td>
+									<td align="center" bgcolor="#FFFFFF">${board.job_code} </td>
+									<td align="center" bgcolor="#FFFFFF">${board.auth_gubun_code} </td>
+									<td align="center" bgcolor="#FFFFFF">${board.before_career_cnt.substring(0,2)}년 ${board.before_career_cnt.substring(2,4)}개월 </td>
+									<td align="center" bgcolor="#FFFFFF">${board.company_career_cnt.substring(0,2)}년 ${board.company_career_cnt.substring(2,4)}개월 </td>
+									<td align="center" bgcolor="#FFFFFF">${board.hp_tel_no} </td>
+									<td align="center" bgcolor="#FFFFFF">${board.hp_tel_no} </td>
+									<td align="center" bgcolor="#FFFFFF">${board.base_team_id} </td>
+									<td align="center" bgcolor="#FFFFFF">${board.my_birthday} </td>
+									<td align="center" bgcolor="#FFFFFF">${board.solar_yn}</td>
+									<td align="center" bgcolor="#FFFFFF">${board.married_anniver_date}</td>
+									<td align="center" bgcolor="#FFFFFF">${board.enter_yn} </td>
 		                        </tr>
-
+		             </c:forEach>
+		             </c:when>
+                     </c:choose>
+                     
 							</table>
 							<!--목록 테이블 끝-->
 						</td>

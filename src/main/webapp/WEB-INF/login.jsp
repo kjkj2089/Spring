@@ -24,21 +24,27 @@
 			f.method.value = "authenticate";
 			f.submit();
 			
+			console.log("${message}");
+			 	
+			 
+			 
 		}
 	}
 
 	//신입 등록 팝업
 	function fn_viewNewEmp(){
-	
+		var f=document.getElementById("login");
 		var theURL="/employee/employeeMgmt.do";
 		var param ="&method=viewNewEmployee";
+		
+		f.method.value="viewNewEmployee";
 		
 		openNoScrollWin(theURL, "VIEW_NEWEMP", "신입등록", "1000", "750", param);
 	}
 	
 	//
 	function fn_init(){
-	  var f =document.getElementById("login");
+	  var f=document.getElementById("login");
 	  f.login_id.focus();
 	}
 </script>
